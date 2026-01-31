@@ -29,7 +29,7 @@ def same_domain(url: str, base_netloc: str) -> bool:
 
 PHONE_DIGITS = 11
 PHONE_PREFIX = ("7", "8")
-PHONE_SECOND_DIGIT = ("3", "4", "5", "8", "9")
+PHONE_SECOND_DIGIT = ("4", "8", "9")
 
 
 def is_valid_phone(digits: str) -> bool:
@@ -44,14 +44,14 @@ def is_valid_phone(digits: str) -> bool:
     return True
 
 
-def to_canonical_digits(digits: str) -> str:
+def to_federal_number(digits: str) -> str:
     if digits[0] == "8":
         return "7" + digits[1:]
     return digits
 
 
 def format_phone(digits: str) -> str:
-    d = to_canonical_digits(digits)
+    d = to_federal_number(digits)
     return f"+7 ({d[1:4]}) {d[4:7]}-{d[7:9]}-{d[9:11]}"
 
 
